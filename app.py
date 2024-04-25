@@ -34,10 +34,12 @@ if choice == "Profiling":
 if choice == "Machine Learning": 
     chosen_target = st.selectbox('Choose the Target Column', df.columns)
     if st.button('Run Modelling'): 
-        setup(df, target=chosen_target)
+        categories = df.columns.to_list()
+        categories.remove(chosen_target)
+        setup(df, target=chosen_target, categorical_features=categories)
         setup_df = pull()
         st.dataframe(setup_df)
         best_model = compare_models()
         compare_df = pull()
+        st.write("Best performing model at the top")
         st.dataframe(compare_df)
-        #save_model(best_model, 'best_model')
