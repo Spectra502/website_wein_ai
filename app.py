@@ -41,7 +41,7 @@ if choice == "Machine Learning":
         setup(df, target=chosen_target, categorical_features=categories)
         setup_df = pull()
         st.dataframe(setup_df)
-        best_model = compare_models(budget_time=1.5)
+        best_model = compare_models(budget_time=0.9)
         compare_df = pull()
         st.write("Best performing model at the top")
         st.dataframe(compare_df)
